@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>樱花动漫-樱花动漫番剧_新番连载_动漫分类_追番推荐</title>
+<meta name="description" content="樱花动漫主题导航页，整理番剧分类、新番连载、完结动画与题材标签，提供观看前的内容筛选与追番方向参考，帮助快速找到想看的动画类型。">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23f7c6d9'/%3E%3Cg fill='%23e86a9a'%3E%3Cellipse cx='32' cy='20' rx='7' ry='10'/%3E%3Cellipse cx='32' cy='44' rx='7' ry='10'/%3E%3Cellipse cx='20' cy='32' rx='10' ry='7'/%3E%3Cellipse cx='44' cy='32' rx='10' ry='7'/%3E%3C/g%3E%3Ccircle cx='32' cy='32' r='6' fill='%23fff5f8'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --sakura:#e86a9a;
+    --sakura-soft:#fbe3ec;
+    --ink:#2f2a30;
+    --ink-soft:#6b6169;
+    --paper:#fffafb;
+    --line:#f0d7e1;
+    --leaf:#7ba05b;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none}
+  .wrap{width:100%;max-width:1080px;margin:0 auto;padding:0 20px}
+
+  .site-head{
+    border-bottom:1px solid var(--line);
+    background:rgba(255,250,251,.94);
+    position:sticky;top:0;z-index:20;
+  }
+  .head-inner{
+    display:flex;align-items:center;gap:18px;
+    padding:12px 0;flex-wrap:wrap;
+  }
+  .brand{display:flex;align-items:center;gap:9px;font-weight:700;font-size:18px;letter-spacing:.5px}
+  .brand svg{width:30px;height:30px;flex:0 0 auto}
+  .nav-links{display:flex;gap:6px;flex-wrap:wrap;margin-left:auto}
+  .nav-links a{
+    font-size:14px;color:var(--ink-soft);
+    padding:5px 11px;border-radius:99px;
+    transition:.2s;
+  }
+  .nav-links a:hover{background:var(--sakura-soft);color:var(--sakura)}
+
+  .first-screen{
+    padding:54px 0 40px;
+    display:grid;
+    grid-template-columns:1.15fr .85fr;
+    gap:44px;align-items:center;
+  }
+  .first-screen h1{
+    font-size:clamp(26px,3.6vw,38px);
+    line-height:1.35;
+    letter-spacing:.5px;
+  }
+  .first-screen h1 em{
+    font-style:normal;color:var(--sakura);
+    border-bottom:4px solid var(--sakura-soft);
+  }
+  .lead{
+    margin-top:16px;font-size:15px;color:var(--ink-soft);
+    max-width:34em;
+  }
+  .tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+  .tag-row span{
+    font-size:13px;color:var(--sakura);
+    background:var(--sakura-soft);
+    border-radius:4px;padding:4px 10px;
+  }
+  .petal-art{display:flex;justify-content:center;align-items:center}
+  .petal-art svg{width:100%;max-width:300px;height:auto}
+
+  section{margin-bottom:52px}
+  .sec-title{
+    display:flex;align-items:baseline;gap:12px;
+    margin-bottom:22px;flex-wrap:wrap;
+  }
+  .sec-title h2{font-size:21px;letter-spacing:.5px}
+  .sec-title .hint{font-size:13px;color:var(--ink-soft)}
+
+  .anime-list{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .anime-item{
+    background:#fff;border:1px solid var(--line);
+    border-radius:10px;padding:18px 18px 16px;
+    display:flex;flex-direction:column;gap:9px;
+    transition:.22s;
+  }
+  .anime-item:hover{transform:translateY(-3px);border-color:#f2b8cf}
+  .anime-item .cover{
+    height:88px;border-radius:7px;
+    display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(135deg,#fdeef4,#f8dbe6);
+  }
+  .anime-item .cover svg{width:44px;height:44px}
+  .anime-item h3{font-size:16px}
+  .anime-item p{font-size:13px;color:var(--ink-soft);line-height:1.7}
+  .meta{font-size:12px;color:var(--sakura);display:flex;gap:8px;flex-wrap:wrap}
+  .meta span{background:var(--sakura-soft);padding:2px 8px;border-radius:3px}
+
+  .genre-board{display:flex;flex-wrap:wrap;gap:12px}
+  .genre-chip{
+    border:1px solid var(--line);background:#fff;
+    border-radius:8px;padding:12px 18px;
+    min-width:130px;flex:1 1 150px;
+  }
+  .genre-chip strong{display:block;font-size:15px;margin-bottom:4px}
+  .genre-chip small{font-size:12px;color:var(--ink-soft);line-height:1.6;display:block}
+
+  .two-col{display:grid;grid-template-columns:1.2fr .8fr;gap:28px}
+  .article-block p{font-size:14.5px;color:var(--ink-soft);margin-bottom:13px}
+  .article-block p:last-child{margin-bottom:0}
+  .article-block strong{color:var(--ink)}
+
+  .order-box{
+    background:#fff;border:1px solid var(--line);border-radius:10px;padding:20px 20px 18px;
+  }
+  .order-box h3{font-size:16px;margin-bottom:12px}
+  .order-box ol{padding-left:18px;font-size:14px;color:var(--ink-soft)}
+  .order-box li{margin-bottom:9px;line-height:1.7}
+
+  .status-table{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .status-card{
+    background:#fff;border:1px solid var(--line);border-radius:9px;
+    padding:16px 15px;
+  }
+  .status-card b{display:block;font-size:15px;margin-bottom:6px;color:var(--sakura)}
+  .status-card span{font-size:13px;color:var(--ink-soft);line-height:1.65;display:block}
+
+  .watch-notes{border-top:2px solid var(--sakura-soft);padding-top:22px}
+  .watch-notes ul{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+  .watch-notes li{
+    font-size:14px;color:var(--ink-soft);
+    padding-left:20px;position:relative;line-height:1.7;
+  }
+  .watch-notes li::before{
+    content:"";position:absolute;left:0;top:9px;
+    width:8px;height:8px;border-radius:50%;
+    background:var(--sakura);opacity:.65;
+  }
+
+  .faq-block{display:flex;flex-direction:column;gap:10px}
+  details{
+    background:#fff;border:1px solid var(--line);
+    border-radius:8px;padding:14px 18px;
+  }
+  summary{
+    cursor:pointer;font-size:15px;font-weight:600;
+    list-style:none;position:relative;padding-right:24px;
+  }
+  summary::-webkit-details-marker{display:none}
+  summary::after{
+    content:"+";position:absolute;right:0;top:0;
+    color:var(--sakura);font-weight:400;font-size:18px;
+  }
+  details[open] summary::after{content:"–"}
+  details p{font-size:14px;color:var(--ink-soft);margin-top:10px;line-height:1.75}
+
+  .closing{
+    background:linear-gradient(120deg,#fbe3ec,#fdf1f5);
+    border-radius:12px;padding:34px 28px;text-align:center;
+  }
+  .closing h2{font-size:20px;margin-bottom:10px}
+  .closing p{font-size:14px;color:var(--ink-soft);max-width:36em;margin:0 auto}
+
+  .site-foot{
+    border-top:1px solid var(--line);
+    padding:26px 0 34px;margin-top:20px;
+    display:flex;justify-content:space-between;gap:16px;
+    flex-wrap:wrap;font-size:13px;color:var(--ink-soft);
+  }
+  .site-foot .foot-brand{display:flex;align-items:center;gap:8px;font-weight:600;color:var(--ink)}
+  .site-foot .foot-brand svg{width:22px;height:22px}
+
+  @media (max-width:860px){
+    .first-screen{grid-template-columns:1fr;gap:26px;padding:36px 0 28px}
+    .petal-art{order:-1}
+    .petal-art svg{max-width:180px}
+    .anime-list{grid-template-columns:repeat(2,1fr)}
+    .two-col{grid-template-columns:1fr}
+    .status-table{grid-template-columns:repeat(2,1fr)}
+  }
+  @media (max-width:560px){
+    .wrap{padding:0 15px}
+    .head-inner{gap:10px}
+    .nav-links{width:100%;margin-left:0;overflow-x:auto;flex-wrap:nowrap;padding-bottom:2px}
+    .nav-links a{white-space:nowrap;font-size:13px}
+    .anime-list{grid-template-columns:1fr}
+    .status-table{grid-template-columns:1fr}
+    .watch-notes ul{grid-template-columns:1fr}
+    .closing{padding:26px 18px}
+    section{margin-bottom:40px}
+  }
+</style>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<header class="site-head">
+  <div class="wrap head-inner">
+    <a class="brand" href="#top">
+      <svg viewBox="0 0 64 64" aria-hidden="true">
+        <circle cx="32" cy="32" r="30" fill="#fbe3ec"/>
+        <g fill="#e86a9a">
+          <ellipse cx="32" cy="20" rx="6" ry="9"/>
+          <ellipse cx="32" cy="44" rx="6" ry="9"/>
+          <ellipse cx="20" cy="32" rx="9" ry="6"/>
+          <ellipse cx="44" cy="32" rx="9" ry="6"/>
+        </g>
+        <circle cx="32" cy="32" r="5" fill="#fffafb"/>
+      </svg>
+      樱花动漫
+    </a>
+    <nav class="nav-links" aria-label="站点导航">
+      <a href="#anime">番剧清单</a>
+      <a href="#genre">题材分类</a>
+      <a href="#status">连载状态</a>
+      <a href="#notes">追番要点</a>
+      <a href="#qa">常见问题</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap">
+
+    <div class="first-screen">
+      <div>
+        <h1>樱花动漫：按题材与连载状态找到想看的<em>动画</em></h1>
+        <p class="lead">把番剧按类型、播出状态和篇幅整理在一起，先看清作品属于什么题材、讲什么故事、适合什么观看节奏，再决定从哪一部开始追。</p>
+        <div class="tag-row">
+          <span>新番连载</span>
+          <span>完结动画</span>
+          <span>恋爱校园</span>
+          <span>热血战斗</span>
+          <span>日常治愈</span>
+        </div>
+      </div>
+      <div class="petal-art" aria-hidden="true">
+        <svg viewBox="0 0 300 240">
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#fbd0e0"/>
+              <stop offset="1" stop-color="#f4a8c4"/>
+            </linearGradient>
+          </defs>
+          <circle cx="150" cy="120" r="96" fill="url(#g1)" opacity="0.55"/>
+          <g fill="#e86a9a" opacity="0.9">
+            <ellipse cx="150" cy="78" rx="20" ry="34"/>
+            <ellipse cx="150" cy="162" rx="20" ry="34"/>
+            <ellipse cx="108" cy="120" rx="34" ry="20"/>
+            <ellipse cx="192" cy="120" rx="34" ry="20"/>
+          </g>
+          <circle cx="150" cy="120" r="17" fill="#fffafb"/>
+          <g fill="#f6b9ce">
+            <circle cx="62" cy="60" r="6"/>
+            <circle cx="238" cy="52" r="4"/>
+            <circle cx="70" cy="188" r="5"/>
+            <circle cx="232" cy="182" r="7"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <section id="anime">
+      <div class="sec-title">
+        <h2>番剧清单</h2>
+        <span class="hint">按题材与观看节奏挑选</span>
+      </div>
+      <div class="anime-list">
+        <article class="anime-item">
+          <div class="cover">
+            <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="8" y="12" width="32" height="24" rx="3" fill="none" stroke="#e86a9a" stroke-width="2.4"/><path d="M20 19l10 6-10 6z" fill="#e86a9a"/></svg>
+          </div>
+          <h3>热血战斗类</h3>
+          <p>强调成长线与对抗节奏，适合喜欢连续剧情推进的观众。</p>
+          <div class="meta"><span>长篇</span><span>剧情向</span></div>
+        </article>
+        <article class="anime-item">
+          <div class="cover">
+            <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 10c6 6 9 10 9 15a9 9 0 1 1-18 0c0-5 3-9 9-15z" fill="none" stroke="#e86a9a" stroke-width="2.4"/><circle cx="24" cy="26" r="3.2" fill="#e86a9a"/></svg>
+          </div>
+          <h3>恋爱校园类</h3>
+          <p>围绕人物关系与日常展开，单集信息量适中，适合碎片时间观看。</p>
+          <div class="meta"><span>季番</span><span>情感向</span></div>
+        </article>
+        <article class="anime-item">
+          <div class="cover">
+            <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="12" fill="none" stroke="#e86a9a" stroke-width="2.4"/><path d="M24 15v9l6 4" fill="none" stroke="#e86a9a" stroke-width="2.4" stroke-linecap="round"/></svg>
+          </div>
+          <h3>日常治愈类</h3>
+          <p>节奏舒缓、冲突较少，适合放松观看，也便于随时暂停。</p>
+          <div class="meta"><span>短篇</span><span>轻松向</span></div>
+        </article>
+        <article class="anime-item">
+          <div class="cover">
+            <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M10 30l10-14 8 10 5-6 5 10z" fill="none" stroke="#e86a9a" stroke-width="2.4" stroke-linejoin="round"/><circle cx="34" cy="15" r="3" fill="#e86a9a"/></svg>
+          </div>
+          <h3>奇幻冒险类</h3>
+          <p>世界观设定较完整，前期铺垫较多，建议连续多集观看。</p>
+          <div class="meta"><span>两季</span><span>设定向</span></div>
+        </article>
+        <article class="anime-item">
+          <div class="cover">
+            <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M14 34V20l10-7 10 7v14" fill="none" stroke="#e86a9a" stroke-width="2.4"/><path d="M20 34v-8h8v8" fill="none" stroke="#e86a9a" stroke-width="2.4"/></svg>
+          </div>
+          <h3>悬疑推理类</h3>
+          <p>线索与反转密集，错过细节容易跟不上，适合专注观看。</p>
+          <div class="meta"><span>季番</span><span>烧脑向</span></div>
+        </article>
+        <article class="anime-item">
+          <div class="cover">
+            <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M12 26c0-7 5-12 12-12s12 5 12 12" fill="none" stroke="#e86a9a" stroke-width="2.4"/><circle cx="19" cy="27" r="2" fill="#e86a9a"/><circle cx="29" cy="27" r="2" fill="#e86a9a"/><path d="M20 33c2.5 2 5.5 2 8 0" fill="none" stroke="#e86a9a" stroke-width="2.2" stroke-linecap="round"/></svg>
+          </div>
+          <h3>喜剧搞笑类</h3>
+          <p>以单元故事和角色互动为主，不依赖前置剧情，随时可入。</p>
+          <div class="meta"><span>单元剧</span><span>解压向</span></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="genre">
+      <div class="sec-title">
+        <h2>题材分类</h2>
+        <span class="hint">先定类型，再缩小范围</span>
+      </div>
+      <div class="genre-board">
+        <div class="genre-chip"><strong>校园日常</strong><small>社团、课堂与青春关系，节奏轻快。</small></div>
+        <div class="genre-chip"><strong>科幻机甲</strong><small>设定与机械描写较多，重视世界观。</small></div>
+        <div class="genre-chip"><strong>运动竞技</strong><small>围绕训练与比赛推进，热血感强。</small></div>
+        <div class="genre-chip"><strong>奇幻异世界</strong><small>穿越、魔法与冒险是常见核心。</small></div>
+        <div class="genre-chip"><strong>美食料理</strong><small>以烹饪过程与人物成长为主线。</small></div>
+        <div class="genre-chip"><strong>音乐偶像</strong><small>舞台演出与团队成长并重。</small></div>
+        <div class="genre-chip"><strong>历史时代</strong><small>背景设定考究，人物关系复杂。</small></div>
+        <div class="genre-chip"><strong>亲子家庭</strong><small>温和叙事，适合多人一起观看。</small></div>
+      </div>
+    </section>
+
+    <section id="status">
+      <div class="sec-title">
+        <h2>连载状态</h2>
+        <span class="hint">按更新情况安排追番计划</span>
+      </div>
+      <div class="status-table">
+        <div class="status-card"><b>正在连载</b><span>每周跟进，适合愿意等待更新的观众。</span></div>
+        <div class="status-card"><b>已完结</b><span>可一次看完整季，节奏安排更自由。</span></div>
+        <div class="status-card"><b>分季播出</b><span>注意季与季之间的顺序，避免跳看。</span></div>
+        <div class="status-card"><b>短篇动画</b><span>单集时长较短，适合通勤等碎片场景。</span></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="two-col">
+        <div class="article-block">
+          <div class="sec-title"><h2>关于樱花动漫的观看选择</h2></div>
+          <p><strong>樱花动漫</strong>作为一个以动画内容为主题的页面，重点不在于罗列所有作品，而在于把选择动画时最常遇到的几个判断点讲清楚：它是什么题材、故事节奏快慢、需要多少前置了解、适合一次看多少集。</p>
+          <p>很多观众打开动画列表后不知道从哪看起，问题往往不是作品太少，而是缺乏筛选顺序。先确定题材方向，再看连载状态，最后结合单集时长安排时间，比在长列表里逐条翻找更高效。</p>
+          <p>在浏览时，可以把樱花动漫里的分类当作一个入口提示：同一题材下的作品往往共享相似的节奏与情绪基调，但具体剧情和人物设定仍要以作品本身的公开简介为准。</p>
+        </div>
+        <aside class="order-box">
+          <h3>推荐筛选顺序</h3>
+          <ol>
+            <li>先选题材：热血、恋爱、日常或悬疑。</li>
+            <li>再看状态：连载中还是已完结。</li>
+            <li>核对篇幅：短篇、季番或长篇。</li>
+            <li>最后排时间：连续看还是分段看。</li>
+          </ol>
+        </aside>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-title">
+        <h2>不同题材的观看方式</h2>
+      </div>
+      <div class="two-col">
+        <div class="article-block">
+          <p>剧情连续型作品通常需要按顺序观看，跳过铺垫集容易出现人物关系混乱。樱花动漫在整理这类内容时，会提示观众关注前后集衔接。</p>
+          <p>单元剧结构的动画则灵活很多，可以从任意一集进入，适合想先试看再决定是否长期追的观众。</p>
+        </div>
+        <div class="article-block">
+          <p>对于分季播出的作品，季与季之间往往存在时间跨度和角色变化，建议按播出顺序推进，不要自行打乱。</p>
+          <p>短篇动画单集信息密度较高，适合集中看完再回顾细节，能更好理解整体结构。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="notes">
+      <div class="sec-title">
+        <h2>追番要点</h2>
+      </div>
+      <div class="watch-notes">
+        <ul>
+          <li>先看作品简介再决定，避免只凭封面判断。</li>
+          <li>留意连载状态，连载中适合边看边讨论。</li>
+          <li>分季作品按顺序观看，减少理解断层。</li>
+          <li>悬疑类尽量连续看，细节更容易串起来。</li>
+          <li>日常治愈类可分段看，不必一次追完。</li>
+          <li>记录已看集数，方便回到上次进度。</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="qa">
+      <div class="sec-title">
+        <h2>常见问题</h2>
+      </div>
+      <div class="faq-block">
+        <details>
+          <summary>樱花动漫这个页面主要提供什么？</summary>
+          <p>它围绕动画观看前的选择需求，整理题材分类、连载状态、篇幅与观看方式等信息，帮助访问者先梳理清楚想看什么类型，再决定追番顺序。</p>
+        </details>
+        <details>
+          <summary>不知道该看哪部动画时应该怎么选？</summary>
+          <p>建议按三步来：先确定偏好的题材方向，再确认自己能接受的篇幅与节奏，最后看是否连载中。按这个顺序筛选，比逐个浏览作品更容易做决定。</p>
+        </details>
+        <details>
+          <summary>连载中的动画和已完结的动画怎么选？</summary>
+          <p>连载中的作品需要按周等待，适合喜欢跟着讨论节奏走的观众；已完结作品可以一次看完整季，适合希望连贯了解剧情的人。两者没有优劣之分，取决于观看习惯。</p>
+        </details>
+        <details>
+          <summary>分季播出的动画必须按顺序看吗？</summary>
+          <p>通常建议按播出顺序观看。分季之间往往存在人物成长和剧情推进，打乱顺序容易对角色关系和事件前因产生误解。</p>
+        </details>
+        <details>
+          <summary>悬疑推理类动画为什么建议连续观看？</summary>
+          <p>这类作品常在前几集埋下线索，后续再逐步回收。分段观看容易遗忘细节，连续观看更有利于把线索和反转对应起来。</p>
+        </details>
+        <details>
+          <summary>日常治愈类动画适合什么时间看？</summary>
+          <p>这类动画冲突较少、节奏平缓，适合在休息或通勤时观看，也方便随时暂停，不必担心错过关键情节。</p>
+        </details>
+      </div>
+    </section>
+
+    <div class="closing">
+      <h2>从题材开始，找到下一部想追的动画</h2>
+      <p>先按题材缩小范围，再结合连载状态和篇幅安排时间，樱花动漫的分类思路可以让追番计划更清晰。</p>
+    </div>
+
+  </div>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap" style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;width:100%">
+    <div class="foot-brand">
+      <svg viewBox="0 0 64 64" aria-hidden="true">
+        <circle cx="32" cy="32" r="30" fill="#fbe3ec"/>
+        <g fill="#e86a9a">
+          <ellipse cx="32" cy="20" rx="6" ry="9"/>
+          <ellipse cx="32" cy="44" rx="6" ry="9"/>
+          <ellipse cx="20" cy="32" rx="9" ry="6"/>
+          <ellipse cx="44" cy="32" rx="9" ry="6"/>
+        </g>
+        <circle cx="32" cy="32" r="5" fill="#fffafb"/>
+      </svg>
+      樱花动漫
+    </div>
+    <div>番剧分类 · 新番连载 · 追番参考 · 樱花动漫</div>
+  </div>
+</footer>
+
+</body>
+</html>
